@@ -1,0 +1,9 @@
+{
+  "name": "zambia-address",
+  "type": "node",
+  "port": 3008,
+  "start": "npm start",
+  "domain": "",
+  "description": "Zambia National Digital Addressing System - generates unique digital codes for every GPS location in Zambia",
+  "repo": ""
+}
