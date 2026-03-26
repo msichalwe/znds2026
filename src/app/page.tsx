@@ -42,6 +42,7 @@ export default function HomePage() {
           <div className="hidden md:flex items-center gap-0">
             {[
               { href: '/map', label: 'MAP' },
+              { href: '/trade-fair', label: 'TRADE FAIR' },
               { href: '/api-docs', label: 'API' },
               { href: '/admin', label: 'ADMIN' },
             ].map(link => (
@@ -66,56 +67,142 @@ export default function HomePage() {
           <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-emerald-500 via-teal-400 to-emerald-500" />
 
           <div className="relative max-w-[1400px] mx-auto px-8 py-24 md:py-40">
-            <div className="max-w-4xl">
-              <div className="text-emerald-400 text-xs font-medium tracking-[0.3em] uppercase mb-8">
-                REPUBLIC OF ZAMBIA &mdash; NATIONAL DIGITAL INFRASTRUCTURE
-              </div>
-              <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white uppercase leading-[0.95] tracking-[-0.03em] mb-8">
-                BUILDING ZAMBIA&apos;S
-                <br />
-                <span className="text-emerald-400">DIGITAL ADDRESS</span>
-                <br />
-                INFRASTRUCTURE
-              </h1>
-              <p className="text-gray-400 text-lg md:text-xl max-w-2xl leading-relaxed mb-12">
-                A unique digital code for every location in Zambia. Generate addresses instantly from GPS coordinates across all 10 provinces.
-              </p>
-
-              {/* Search */}
-              <form onSubmit={handleSearch} className="max-w-2xl mb-12">
-                <div className="flex items-stretch">
-                  <div className="flex-1 flex items-center bg-white/10 border border-white/20 backdrop-blur-sm">
-                    <div className="pl-5">
-                      <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
-                    </div>
-                    <input
-                      type="text"
-                      value={searchQuery}
-                      onChange={(e) => setSearchQuery(e.target.value)}
-                      placeholder="Search digital address or location..."
-                      className="flex-1 px-4 py-4 bg-transparent text-white placeholder-gray-500 focus:outline-none text-base"
-                    />
-                  </div>
-                  <button type="submit" className="px-8 bg-emerald-500 hover:bg-emerald-600 text-white text-xs font-medium tracking-[0.15em] uppercase transition-colors flex items-center gap-2">
-                    SEARCH
-                    <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
-                  </button>
+            <div className="flex items-center justify-between">
+              <div className="max-w-4xl relative z-10">
+                <div className="text-emerald-400 text-xs font-medium tracking-[0.3em] uppercase mb-8">
+                  REPUBLIC OF ZAMBIA &mdash; NATIONAL DIGITAL INFRASTRUCTURE
                 </div>
-              </form>
+                <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white uppercase leading-[0.95] tracking-[-0.03em] mb-8">
+                  BUILDING ZAMBIA&apos;S
+                  <br />
+                  <span className="text-emerald-400">DIGITAL ADDRESS</span>
+                  <br />
+                  INFRASTRUCTURE
+                </h1>
+                <p className="text-gray-400 text-lg md:text-xl max-w-2xl leading-relaxed mb-12">
+                  A unique digital code for every location in Zambia. Generate addresses instantly from GPS coordinates across all 10 provinces.
+                </p>
 
-              {/* Quick Links */}
-              <div className="flex flex-wrap gap-4">
-                {[
-                  { href: '/map', label: 'Interactive Map', icon: '01' },
-                  { href: '/api-docs', label: 'API Reference', icon: '02' },
-                  { href: '/admin', label: 'Dashboard', icon: '03' },
-                ].map(item => (
-                  <Link key={item.href} href={item.href} className="group flex items-center gap-4 px-6 py-3 border border-white/10 hover:border-emerald-400/50 hover:bg-white/5 transition-all">
-                    <span className="text-emerald-400 text-xs font-mono font-bold">{item.icon}</span>
-                    <span className="text-white text-sm tracking-wide">{item.label}</span>
-                    <svg className="w-3.5 h-3.5 text-gray-500 group-hover:text-emerald-400 transition-colors ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
-                  </Link>
-                ))}
+                {/* Search */}
+                <form onSubmit={handleSearch} className="max-w-2xl mb-12">
+                  <div className="flex items-stretch">
+                    <div className="flex-1 flex items-center bg-white/10 border border-white/20 backdrop-blur-sm">
+                      <div className="pl-5">
+                        <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+                      </div>
+                      <input
+                        type="text"
+                        value={searchQuery}
+                        onChange={(e) => setSearchQuery(e.target.value)}
+                        placeholder="Search digital address or location..."
+                        className="flex-1 px-4 py-4 bg-transparent text-white placeholder-gray-500 focus:outline-none text-base"
+                      />
+                    </div>
+                    <button type="submit" className="px-8 bg-emerald-500 hover:bg-emerald-600 text-white text-xs font-medium tracking-[0.15em] uppercase transition-colors flex items-center gap-2">
+                      SEARCH
+                      <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+                    </button>
+                  </div>
+                </form>
+
+                {/* Quick Links */}
+                <div className="flex flex-wrap gap-4">
+                  {[
+                    { href: '/map', label: 'Interactive Map', icon: '01' },
+                    { href: '/api-docs', label: 'API Reference', icon: '02' },
+                    { href: '/trade-fair', label: 'Trade Fair', icon: '03' },
+                  ].map(item => (
+                    <Link key={item.href} href={item.href} className="group flex items-center gap-4 px-6 py-3 border border-white/10 hover:border-emerald-400/50 hover:bg-white/5 transition-all">
+                      <span className="text-emerald-400 text-xs font-mono font-bold">{item.icon}</span>
+                      <span className="text-white text-sm tracking-wide">{item.label}</span>
+                      <svg className="w-3.5 h-3.5 text-gray-500 group-hover:text-emerald-400 transition-colors ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+
+              {/* Zambia Map SVG — faded on the right */}
+              <div className="hidden lg:block absolute right-0 top-1/2 -translate-y-1/2 w-[600px] h-[600px] zambia-map-container">
+                <svg viewBox="0 0 500 500" className="w-full h-full zambia-svg" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <linearGradient id="zambiaGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stopColor="#10b981" stopOpacity="0.3" />
+                      <stop offset="50%" stopColor="#14b8a6" stopOpacity="0.15" />
+                      <stop offset="100%" stopColor="#0ea5e9" stopOpacity="0.05" />
+                    </linearGradient>
+                    <linearGradient id="zambiaStroke" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stopColor="#10b981" stopOpacity="0.8" />
+                      <stop offset="100%" stopColor="#14b8a6" stopOpacity="0.3" />
+                    </linearGradient>
+                    <filter id="glow">
+                      <feGaussianBlur stdDeviation="3" result="blur" />
+                      <feMerge>
+                        <feMergeNode in="blur" />
+                        <feMergeNode in="SourceGraphic" />
+                      </feMerge>
+                    </filter>
+                    <radialGradient id="fadeMask" cx="40%" cy="50%" r="60%">
+                      <stop offset="0%" stopColor="white" stopOpacity="1" />
+                      <stop offset="70%" stopColor="white" stopOpacity="0.6" />
+                      <stop offset="100%" stopColor="white" stopOpacity="0" />
+                    </radialGradient>
+                    <mask id="fadeOut">
+                      <rect width="500" height="500" fill="url(#fadeMask)" />
+                    </mask>
+                  </defs>
+                  <g mask="url(#fadeOut)">
+                    {/* Zambia country outline */}
+                    <path
+                      className="zambia-outline"
+                      d="M95,135 L105,120 L120,115 L140,105 L155,100 L170,95 L190,90 L210,88 L225,92 L240,100 L255,95 L270,90 L285,88 L300,92 L315,100 L330,108 L340,115 L350,125 L360,118 L375,112 L390,120 L400,130 L405,145 L410,160 L415,175 L410,190 L405,205 L400,215 L395,230 L400,245 L405,260 L400,275 L390,285 L380,295 L370,305 L355,315 L340,320 L325,330 L310,340 L295,345 L280,350 L265,355 L250,360 L235,365 L220,370 L205,375 L190,370 L175,360 L160,350 L150,340 L140,325 L130,310 L120,295 L110,280 L100,265 L95,250 L90,235 L85,220 L80,205 L78,190 L80,175 L85,160 L90,145 Z"
+                      fill="url(#zambiaGrad)"
+                      stroke="url(#zambiaStroke)"
+                      strokeWidth="1.5"
+                      filter="url(#glow)"
+                    />
+                    {/* Internal province borders */}
+                    <path className="zambia-provinces" d="M190,90 L195,150 L200,210 L210,270 L220,330" stroke="#10b981" strokeWidth="0.5" strokeOpacity="0.2" strokeDasharray="4,4" />
+                    <path className="zambia-provinces" d="M300,92 L295,160 L290,230 L285,300 L280,350" stroke="#10b981" strokeWidth="0.5" strokeOpacity="0.2" strokeDasharray="4,4" />
+                    <path className="zambia-provinces" d="M80,190 L150,195 L220,200 L290,205 L360,210 L410,190" stroke="#10b981" strokeWidth="0.5" strokeOpacity="0.2" strokeDasharray="4,4" />
+                    <path className="zambia-provinces" d="M120,295 L200,290 L280,285 L360,280 L390,285" stroke="#10b981" strokeWidth="0.5" strokeOpacity="0.2" strokeDasharray="4,4" />
+
+                    {/* City dots with pulse */}
+                    {/* Lusaka */}
+                    <circle className="zambia-city-pulse" cx="260" cy="280" r="8" fill="#10b981" fillOpacity="0.15" />
+                    <circle className="zambia-city" cx="260" cy="280" r="3" fill="#10b981" fillOpacity="0.8" />
+                    <text x="272" y="284" className="zambia-label" fill="#10b981" fillOpacity="0.5" fontSize="8" fontFamily="monospace">LSA</text>
+
+                    {/* Ndola / Copperbelt */}
+                    <circle className="zambia-city-pulse" cx="255" cy="140" r="6" fill="#14b8a6" fillOpacity="0.12" />
+                    <circle className="zambia-city" cx="255" cy="140" r="2.5" fill="#14b8a6" fillOpacity="0.6" />
+                    <text x="264" y="144" className="zambia-label" fill="#14b8a6" fillOpacity="0.4" fontSize="7" fontFamily="monospace">CPB</text>
+
+                    {/* Livingstone / Southern */}
+                    <circle className="zambia-city-pulse" cx="210" cy="350" r="6" fill="#0ea5e9" fillOpacity="0.12" />
+                    <circle className="zambia-city" cx="210" cy="350" r="2.5" fill="#0ea5e9" fillOpacity="0.6" />
+                    <text x="219" y="354" className="zambia-label" fill="#0ea5e9" fillOpacity="0.4" fontSize="7" fontFamily="monospace">SOU</text>
+
+                    {/* Chipata / Eastern */}
+                    <circle className="zambia-city-pulse" cx="380" cy="240" r="6" fill="#8b5cf6" fillOpacity="0.12" />
+                    <circle className="zambia-city" cx="380" cy="240" r="2.5" fill="#8b5cf6" fillOpacity="0.6" />
+                    <text x="389" y="244" className="zambia-label" fill="#8b5cf6" fillOpacity="0.4" fontSize="7" fontFamily="monospace">EAS</text>
+
+                    {/* Mongu / Western */}
+                    <circle className="zambia-city-pulse" cx="130" cy="260" r="6" fill="#f59e0b" fillOpacity="0.12" />
+                    <circle className="zambia-city" cx="130" cy="260" r="2.5" fill="#f59e0b" fillOpacity="0.6" />
+                    <text x="139" y="264" className="zambia-label" fill="#f59e0b" fillOpacity="0.4" fontSize="7" fontFamily="monospace">WES</text>
+
+                    {/* Digital grid overlay */}
+                    <g strokeOpacity="0.04" stroke="#10b981" strokeWidth="0.5">
+                      {Array.from({ length: 12 }, (_, i) => (
+                        <line key={`h${i}`} x1="60" y1={80 + i * 30} x2="430" y2={80 + i * 30} />
+                      ))}
+                      {Array.from({ length: 13 }, (_, i) => (
+                        <line key={`v${i}`} x1={60 + i * 30} y1="80" x2={60 + i * 30} y2="400" />
+                      ))}
+                    </g>
+                  </g>
+                </svg>
               </div>
             </div>
           </div>
@@ -320,8 +407,9 @@ export default function HomePage() {
                 {[
                   { num: '01', label: 'Home', href: '/' },
                   { num: '02', label: 'Interactive Map', href: '/map' },
-                  { num: '03', label: 'API Documentation', href: '/api-docs' },
-                  { num: '04', label: 'Admin Dashboard', href: '/admin' },
+                  { num: '03', label: 'Trade Fair', href: '/trade-fair' },
+                  { num: '04', label: 'API Documentation', href: '/api-docs' },
+                  { num: '05', label: 'Admin Dashboard', href: '/admin' },
                 ].map(link => (
                   <Link key={link.href} href={link.href} className="flex items-center gap-4 py-4 border-b border-white/10 group hover:border-emerald-400/30 transition-colors">
                     <span className="text-emerald-400 text-xs font-mono font-bold">{link.num}</span>

@@ -78,6 +78,89 @@ body {
   100% { transform: translate(-50%, -50%) scale(1); opacity: 0.6; }
 }
 
+/* Zambia Hero Map Animations */
+.zambia-map-container {
+  animation: zambiaFadeIn 2s ease-out forwards;
+  opacity: 0;
+}
+
+.zambia-outline {
+  stroke-dasharray: 2000;
+  stroke-dashoffset: 2000;
+  animation: zambiaDraw 3s ease-out 0.5s forwards;
+}
+
+.zambia-provinces {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: zambiaDraw 2s ease-out 1.5s forwards;
+}
+
+.zambia-city {
+  opacity: 0;
+  animation: zambiaFadeIn 0.8s ease-out 2.5s forwards;
+}
+
+.zambia-city-pulse {
+  opacity: 0;
+  animation: zambiaFadeIn 0.8s ease-out 2.5s forwards, zambiaCityPulse 3s ease-in-out 3s infinite;
+}
+
+.zambia-label {
+  opacity: 0;
+  animation: zambiaFadeIn 0.8s ease-out 3s forwards;
+}
+
+.zambia-svg {
+  animation: zambiaFloat 8s ease-in-out infinite;
+}
+
+@keyframes zambiaDraw {
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes zambiaFadeIn {
+  to { opacity: 1; }
+}
+
+@keyframes zambiaCityPulse {
+  0%, 100% { transform-origin: center; r: 6; opacity: 0.12; }
+  50% { r: 10; opacity: 0.25; }
+}
+
+@keyframes zambiaFloat {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+}
+
+/* Trade Fair Animations */
+.trade-fair-stand {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.trade-fair-stand:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+}
+
+.floor-plan-user {
+  animation: userBounce 2s ease-in-out infinite;
+}
+
+@keyframes userBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+.stand-appear {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: standAppear 0.6s ease-out forwards;
+}
+
+@keyframes standAppear {
+  to { opacity: 1; transform: translateY(0); }
+}
+
 /* Scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
