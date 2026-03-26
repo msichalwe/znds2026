@@ -27,172 +27,198 @@ export default function HomePage() {
   };
 
   return (
-    <div className="min-h-screen bg-white">
-      {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-xl border-b border-gray-100">
-        <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-400 to-teal-500 flex items-center justify-center shadow-lg shadow-emerald-200">
-              <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <div className="min-h-screen bg-[#F5F6F8]">
+      {/* ── Navigation ────────────────────────────────────────────── */}
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-gray-200">
+        <div className="max-w-[1400px] mx-auto px-8 h-16 flex items-center justify-between">
+          <Link href="/" className="flex items-center gap-3">
+            <div className="w-9 h-9 bg-[#0F1629] flex items-center justify-center">
+              <svg className="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
               </svg>
             </div>
-            <div>
-              <h1 className="text-gray-900 font-bold text-lg leading-tight">ZNDS</h1>
-              <p className="text-emerald-600 text-[10px] uppercase tracking-widest font-medium">Zambia National Digital Addressing System</p>
-            </div>
-          </div>
-          <div className="hidden md:flex items-center gap-1">
-            <Link href="/map" className="px-4 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-lg transition-all">Map</Link>
-            <Link href="/api-docs" className="px-4 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-lg transition-all">API</Link>
-            <Link href="/admin" className="px-4 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-lg transition-all">Admin</Link>
-            <Link href="/map" className="ml-2 px-5 py-2 text-sm font-medium text-white bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 rounded-lg transition-all shadow-lg shadow-emerald-200">Open Map</Link>
+            <span className="text-[#0F1629] font-bold text-lg tracking-tight">ZNDS</span>
+          </Link>
+          <div className="hidden md:flex items-center gap-0">
+            {[
+              { href: '/map', label: 'MAP' },
+              { href: '/api-docs', label: 'API' },
+              { href: '/admin', label: 'ADMIN' },
+            ].map(link => (
+              <Link key={link.href} href={link.href} className="px-5 py-2 text-xs font-medium text-gray-500 hover:text-[#0F1629] tracking-[0.15em] uppercase transition-colors">
+                {link.label}
+              </Link>
+            ))}
+            <Link href="/map" className="ml-4 px-6 py-2.5 bg-[#0F1629] text-white text-xs font-medium tracking-[0.15em] uppercase hover:bg-[#1a2240] transition-colors flex items-center gap-3">
+              OPEN MAP
+              <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+            </Link>
           </div>
         </div>
       </nav>
 
-      {/* Hero */}
-      <section className="relative pt-32 pb-24 px-6 overflow-hidden">
-        {/* Background decorations */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-20 left-1/4 w-[500px] h-[500px] bg-emerald-100 rounded-full blur-[120px] opacity-60" />
-          <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-teal-100 rounded-full blur-[100px] opacity-50" />
-          <div className="absolute top-40 right-10 w-[300px] h-[300px] bg-amber-100 rounded-full blur-[100px] opacity-40" />
-        </div>
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,rgba(0,0,0,0.03)_1px,transparent_0)] bg-[size:32px_32px]" />
+      {/* ── Hero ──────────────────────────────────────────────────── */}
+      <section className="relative pt-16 overflow-hidden">
+        <div className="bg-[#0F1629] relative">
+          {/* Grid pattern overlay */}
+          <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:64px_64px]" />
+          {/* Accent line */}
+          <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-emerald-500 via-teal-400 to-emerald-500" />
 
-        <div className="relative max-w-5xl mx-auto text-center">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-emerald-50 border border-emerald-200 rounded-full text-emerald-700 text-xs font-medium mb-8">
-            <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse" />
-            Republic of Zambia &mdash; National Digital Infrastructure
-          </div>
+          <div className="relative max-w-[1400px] mx-auto px-8 py-24 md:py-40">
+            <div className="max-w-4xl">
+              <div className="text-emerald-400 text-xs font-medium tracking-[0.3em] uppercase mb-8">
+                REPUBLIC OF ZAMBIA &mdash; NATIONAL DIGITAL INFRASTRUCTURE
+              </div>
+              <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white uppercase leading-[0.95] tracking-[-0.03em] mb-8">
+                BUILDING ZAMBIA&apos;S
+                <br />
+                <span className="text-emerald-400">DIGITAL ADDRESS</span>
+                <br />
+                INFRASTRUCTURE
+              </h1>
+              <p className="text-gray-400 text-lg md:text-xl max-w-2xl leading-relaxed mb-12">
+                A unique digital code for every location in Zambia. Generate addresses instantly from GPS coordinates across all 10 provinces.
+              </p>
 
-          <h2 className="text-5xl md:text-7xl font-bold text-gray-900 mb-6 leading-[1.1] tracking-tight">
-            Every Location.
-            <br />
-            <span className="bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500 bg-clip-text text-transparent">One Digital Address.</span>
-          </h2>
-
-          <p className="text-lg md:text-xl text-gray-500 max-w-2xl mx-auto mb-12 leading-relaxed">
-            A unique digital code for every point in Zambia. Click any location on the map to generate its address instantly. Search, navigate, and manage POIs across all 10 provinces.
-          </p>
-
-          {/* Search */}
-          <form onSubmit={handleSearch} className="max-w-2xl mx-auto mb-16">
-            <div className="relative group">
-              <div className="absolute -inset-1 bg-gradient-to-r from-emerald-200 via-teal-200 to-cyan-200 rounded-2xl blur opacity-40 group-hover:opacity-60 transition-opacity" />
-              <div className="relative flex items-center bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-xl shadow-gray-100/50">
-                <div className="pl-5">
-                  <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+              {/* Search */}
+              <form onSubmit={handleSearch} className="max-w-2xl mb-12">
+                <div className="flex items-stretch">
+                  <div className="flex-1 flex items-center bg-white/10 border border-white/20 backdrop-blur-sm">
+                    <div className="pl-5">
+                      <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+                    </div>
+                    <input
+                      type="text"
+                      value={searchQuery}
+                      onChange={(e) => setSearchQuery(e.target.value)}
+                      placeholder="Search digital address or location..."
+                      className="flex-1 px-4 py-4 bg-transparent text-white placeholder-gray-500 focus:outline-none text-base"
+                    />
+                  </div>
+                  <button type="submit" className="px-8 bg-emerald-500 hover:bg-emerald-600 text-white text-xs font-medium tracking-[0.15em] uppercase transition-colors flex items-center gap-2">
+                    SEARCH
+                    <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+                  </button>
                 </div>
-                <input type="text" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} placeholder="Search digital address (LSA-K28-870183) or location..." className="flex-1 px-4 py-4 bg-transparent text-gray-900 placeholder-gray-400 focus:outline-none text-base" />
-                <button type="submit" className="px-6 py-2.5 m-2 bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white font-medium rounded-xl transition-all text-sm shadow-lg shadow-emerald-200">Search</button>
+              </form>
+
+              {/* Quick Links */}
+              <div className="flex flex-wrap gap-4">
+                {[
+                  { href: '/map', label: 'Interactive Map', icon: '01' },
+                  { href: '/api-docs', label: 'API Reference', icon: '02' },
+                  { href: '/admin', label: 'Dashboard', icon: '03' },
+                ].map(item => (
+                  <Link key={item.href} href={item.href} className="group flex items-center gap-4 px-6 py-3 border border-white/10 hover:border-emerald-400/50 hover:bg-white/5 transition-all">
+                    <span className="text-emerald-400 text-xs font-mono font-bold">{item.icon}</span>
+                    <span className="text-white text-sm tracking-wide">{item.label}</span>
+                    <svg className="w-3.5 h-3.5 text-gray-500 group-hover:text-emerald-400 transition-colors ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+                  </Link>
+                ))}
               </div>
             </div>
-          </form>
+          </div>
+        </div>
+      </section>
 
-          {/* Quick Actions */}
-          <div className="flex flex-wrap items-center justify-center gap-4">
+      {/* ── Our Mission ───────────────────────────────────────────── */}
+      <section className="py-24 md:py-32 px-8">
+        <div className="max-w-[1400px] mx-auto">
+          <div className="max-w-3xl mx-auto text-center">
+            <div className="text-emerald-600 text-xs font-medium tracking-[0.3em] uppercase mb-6">OUR MISSION</div>
+            <h2 className="text-3xl md:text-5xl font-bold text-[#0F1629] uppercase leading-[1] tracking-[-0.02em] mb-8">
+              A DIGITAL ADDRESS FOR EVERY LOCATION IN ZAMBIA
+            </h2>
+            <p className="text-gray-500 text-lg leading-relaxed">
+              The Zambia National Digital Addressing System assigns a unique, human-readable code to every point in the country. Built on GPS coordinates, each address is deterministic, permanent, and instantly verifiable &mdash; enabling navigation, delivery, emergency services, and commerce across all 10 provinces.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* ── How It Works ──────────────────────────────────────────── */}
+      <section className="py-24 md:py-32 px-8 bg-white">
+        <div className="max-w-[1400px] mx-auto">
+          <div className="text-emerald-600 text-xs font-medium tracking-[0.3em] uppercase mb-6">HOW IT WORKS</div>
+          <h2 className="text-3xl md:text-5xl font-bold text-[#0F1629] uppercase leading-[1] tracking-[-0.02em] mb-16 max-w-2xl">
+            DIGITAL ADDRESS IN THREE STEPS
+          </h2>
+
+          <div className="grid md:grid-cols-3 gap-0 border-t border-gray-200">
             {[
-              { href: '/map', title: 'Interactive Map', desc: 'Click to generate addresses', gradient: 'from-emerald-500 to-teal-500', bg: 'bg-emerald-50', text: 'text-emerald-700', icon: <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" /> },
-              { href: '/api-docs', title: 'API Access', desc: 'Integrate with your apps', gradient: 'from-blue-500 to-indigo-500', bg: 'bg-blue-50', text: 'text-blue-700', icon: <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /> },
-              { href: '/admin', title: 'Manage POIs', desc: 'Areas, events & locations', gradient: 'from-purple-500 to-pink-500', bg: 'bg-purple-50', text: 'text-purple-700', icon: <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" /> },
-            ].map((a) => (
-              <Link key={a.href} href={a.href} className={`group flex items-center gap-3 px-6 py-3.5 bg-white hover:shadow-lg border border-gray-100 hover:border-gray-200 rounded-xl transition-all shadow-sm`}>
-                <div className={`w-10 h-10 rounded-lg ${a.bg} flex items-center justify-center`}>
-                  <svg className={`w-5 h-5 ${a.text}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">{a.icon}</svg>
-                </div>
-                <div className="text-left">
-                  <div className="text-sm font-semibold text-gray-900">{a.title}</div>
-                  <div className="text-xs text-gray-400">{a.desc}</div>
-                </div>
-              </Link>
+              { step: '01', title: 'SELECT LOCATION', desc: 'Click anywhere on the map or enter GPS coordinates to pinpoint your location within Zambia.', accent: 'text-emerald-500' },
+              { step: '02', title: 'GENERATE ADDRESS', desc: 'The system identifies the province, calculates the sector grid, and creates a unique 6-digit code from coordinates.', accent: 'text-blue-500' },
+              { step: '03', title: 'USE & SHARE', desc: 'Copy your digital address, share it, look up any code, or navigate to it. Use it for deliveries, emergencies, and commerce.', accent: 'text-purple-500' },
+            ].map((item, i) => (
+              <div key={i} className={`py-10 pr-10 ${i < 2 ? 'md:border-r border-gray-200' : ''} ${i > 0 ? 'md:pl-10' : ''}`}>
+                <div className={`text-sm font-mono font-bold ${item.accent} mb-6`}>{item.step}</div>
+                <h3 className="text-lg font-bold text-[#0F1629] uppercase tracking-wide mb-4">{item.title}</h3>
+                <p className="text-gray-500 leading-relaxed">{item.desc}</p>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* How It Works */}
-      <section className="relative py-24 px-6 bg-gray-50/50">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <p className="text-emerald-600 text-sm font-semibold uppercase tracking-widest mb-3">How It Works</p>
-            <h3 className="text-3xl md:text-4xl font-bold text-gray-900">Digital Address in Three Steps</h3>
-          </div>
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              { step: '01', title: 'Select Location', desc: 'Click anywhere on the map or enter GPS coordinates to pinpoint your location.', color: 'emerald', icon: <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122" /> },
-              { step: '02', title: 'Generate Address', desc: 'The system identifies the province, sector, and creates a unique code from GPS coordinates.', color: 'blue', icon: <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /> },
-              { step: '03', title: 'Use & Share', desc: 'Copy, share, or look up any digital address. Add POIs and create event zones.', color: 'purple', icon: <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" /> },
-            ].map((item, i) => {
-              const bgColors = { emerald: 'bg-emerald-50', blue: 'bg-blue-50', purple: 'bg-purple-50' };
-              const textColors = { emerald: 'text-emerald-600', blue: 'text-blue-600', purple: 'text-purple-600' };
-              const borderColors = { emerald: 'border-emerald-100', blue: 'border-blue-100', purple: 'border-purple-100' };
-              return (
-                <div key={i} className="group relative">
-                  <div className={`bg-white border ${borderColors[item.color as keyof typeof borderColors]} rounded-2xl p-8 hover:shadow-xl hover:shadow-gray-100/50 transition-all`}>
-                    <div className="text-6xl font-black text-gray-50 absolute top-4 right-6">{item.step}</div>
-                    <div className={`w-14 h-14 rounded-xl ${bgColors[item.color as keyof typeof bgColors]} flex items-center justify-center ${textColors[item.color as keyof typeof textColors]} mb-6`}>
-                      <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">{item.icon}</svg>
-                    </div>
-                    <h4 className="text-xl font-semibold text-gray-900 mb-3">{item.title}</h4>
-                    <p className="text-gray-500 leading-relaxed">{item.desc}</p>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
+      {/* ── Address Format ────────────────────────────────────────── */}
+      <section className="py-24 md:py-32 px-8">
+        <div className="max-w-[1400px] mx-auto">
+          <div className="grid md:grid-cols-2 gap-16 items-center">
+            <div>
+              <div className="text-blue-500 text-xs font-medium tracking-[0.3em] uppercase mb-6">ADDRESS FORMAT</div>
+              <h2 className="text-3xl md:text-5xl font-bold text-[#0F1629] uppercase leading-[1] tracking-[-0.02em] mb-8">
+                UNDERSTANDING THE CODE
+              </h2>
+              <p className="text-gray-500 text-lg leading-relaxed mb-10">
+                Every ZNDS digital address follows a standardized format: Province-Sector-UniqueID. The code is deterministic &mdash; the same coordinates always produce the same address.
+              </p>
 
-      {/* Address Format */}
-      <section className="relative py-24 px-6">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-12">
-            <p className="text-emerald-600 text-sm font-semibold uppercase tracking-widest mb-3">Address Format</p>
-            <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Understanding the Code</h3>
-          </div>
-          <div className="relative">
-            <div className="absolute -inset-1 bg-gradient-to-r from-emerald-200 via-teal-200 to-cyan-200 rounded-3xl blur opacity-30" />
-            <div className="relative bg-white border border-gray-100 rounded-3xl p-10 shadow-xl">
-              <div className="flex items-center justify-center mb-10">
-                <div className="text-5xl md:text-6xl font-mono font-bold tracking-wider">
-                  <span className="text-emerald-500">LSA</span><span className="text-gray-200 mx-1">-</span>
-                  <span className="text-blue-500">K28</span><span className="text-gray-200 mx-1">-</span>
-                  <span className="text-purple-500">870183</span>
-                </div>
-              </div>
-              <div className="grid md:grid-cols-3 gap-6">
+              <div className="space-y-0 border-t border-gray-200">
                 {[
-                  { code: 'LSA', label: 'Province Code', desc: 'Identifies the province (Lusaka)', color: 'emerald' },
-                  { code: 'K28', label: 'Sector Code', desc: 'Grid sector from GPS coordinates', color: 'blue' },
-                  { code: '870183', label: 'Location ID', desc: 'Last 3 digits of longitude + last 3 of latitude', color: 'purple' },
-                ].map((c) => {
-                  const bg = { emerald: 'bg-emerald-50 border-emerald-100', blue: 'bg-blue-50 border-blue-100', purple: 'bg-purple-50 border-purple-100' };
-                  const text = { emerald: 'text-emerald-600', blue: 'text-blue-600', purple: 'text-purple-600' };
-                  return (
-                    <div key={c.code} className={`text-center p-5 ${bg[c.color as keyof typeof bg]} border rounded-xl`}>
-                      <div className={`text-2xl font-mono font-bold ${text[c.color as keyof typeof text]} mb-2`}>{c.code}</div>
-                      <div className="text-sm font-medium text-gray-800 mb-1">{c.label}</div>
-                      <div className="text-xs text-gray-500">{c.desc}</div>
+                  { code: 'LSA', label: 'Province Code', desc: '3-letter code identifying one of 10 provinces', color: 'text-emerald-500' },
+                  { code: 'K28', label: 'Sector Code', desc: 'Grid sector derived from latitude and longitude', color: 'text-blue-500' },
+                  { code: '870183', label: 'Location ID', desc: 'Last 3 digits of longitude + last 3 digits of latitude', color: 'text-purple-500' },
+                ].map((item) => (
+                  <div key={item.code} className="flex items-start gap-6 py-5 border-b border-gray-200">
+                    <span className={`font-mono font-bold text-xl ${item.color} w-20 shrink-0`}>{item.code}</span>
+                    <div>
+                      <div className="text-sm font-bold text-[#0F1629] uppercase tracking-wide mb-1">{item.label}</div>
+                      <div className="text-sm text-gray-500">{item.desc}</div>
                     </div>
-                  );
-                })}
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="bg-[#0F1629] p-12 md:p-16 relative">
+              <div className="absolute top-0 left-0 w-4 h-4 bg-emerald-400" />
+              <div className="absolute bottom-0 right-0 w-4 h-4 bg-emerald-400" />
+              <div className="text-center">
+                <div className="text-xs text-gray-500 tracking-[0.3em] uppercase mb-6">EXAMPLE ADDRESS</div>
+                <div className="text-4xl md:text-5xl font-mono font-bold tracking-[0.1em] mb-8">
+                  <span className="text-emerald-400">LSA</span>
+                  <span className="text-gray-600">-</span>
+                  <span className="text-blue-400">K28</span>
+                  <span className="text-gray-600">-</span>
+                  <span className="text-purple-400">870183</span>
+                </div>
+                <div className="text-gray-500 text-sm">Lusaka Province &middot; Sector K28 &middot; Point 870183</div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Province Coverage */}
-      <section className="relative py-24 px-6 bg-gray-50/50">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
-            <p className="text-emerald-600 text-sm font-semibold uppercase tracking-widest mb-3">Coverage</p>
-            <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">All 10 Provinces</h3>
-          </div>
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
+      {/* ── Province Coverage ─────────────────────────────────────── */}
+      <section className="py-24 md:py-32 px-8 bg-white">
+        <div className="max-w-[1400px] mx-auto">
+          <div className="text-emerald-600 text-xs font-medium tracking-[0.3em] uppercase mb-6">COVERAGE</div>
+          <h2 className="text-3xl md:text-5xl font-bold text-[#0F1629] uppercase leading-[1] tracking-[-0.02em] mb-16 max-w-xl">
+            ALL 10 PROVINCES
+          </h2>
+
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-0 border-t border-l border-gray-200">
             {(stats?.provinceStats || [
               { code: 'LSA', name: 'Lusaka' }, { code: 'CPB', name: 'Copperbelt' },
               { code: 'CEN', name: 'Central' }, { code: 'SOU', name: 'Southern' },
@@ -200,30 +226,38 @@ export default function HomePage() {
               { code: 'MUG', name: 'Muchinga' }, { code: 'WES', name: 'Western' },
               { code: 'NWE', name: 'North-Western' }, { code: 'LUA', name: 'Luapula' },
             ].map(p => ({ ...p, address_count: '0', poi_count: '0' }))).map((p) => (
-              <div key={p.code} className="bg-white border border-gray-100 rounded-xl p-4 hover:border-emerald-200 hover:shadow-lg hover:shadow-emerald-50 transition-all cursor-pointer">
-                <div className="text-xs font-mono text-emerald-600 font-bold mb-1">{p.code}</div>
-                <div className="text-sm font-medium text-gray-900 truncate">{p.name}</div>
-                <div className="text-[10px] text-gray-400 mt-1">{p.address_count} addresses &middot; {p.poi_count} POIs</div>
+              <div key={p.code} className="border-r border-b border-gray-200 p-6 hover:bg-emerald-50 transition-colors group">
+                <div className="text-xs font-mono text-emerald-600 font-bold mb-2">{p.code}</div>
+                <div className="text-sm font-bold text-[#0F1629] uppercase tracking-wide mb-3">{p.name}</div>
+                <div className="text-[11px] text-gray-400 space-y-0.5">
+                  <div>{p.address_count} addresses</div>
+                  <div>{p.poi_count} POIs</div>
+                </div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Stats */}
+      {/* ── Stats ─────────────────────────────────────────────────── */}
       {stats && (
-        <section className="relative py-16 px-6">
-          <div className="max-w-4xl mx-auto">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <section className="py-24 px-8">
+          <div className="max-w-[1400px] mx-auto">
+            <div className="text-blue-500 text-xs font-medium tracking-[0.3em] uppercase mb-6">SYSTEM METRICS</div>
+            <h2 className="text-3xl md:text-5xl font-bold text-[#0F1629] uppercase leading-[1] tracking-[-0.02em] mb-16 max-w-xl">
+              BY THE NUMBERS
+            </h2>
+
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-0 border-t border-l border-gray-200">
               {[
-                { label: 'Digital Addresses', value: stats.totalAddresses.toLocaleString(), color: 'text-emerald-600', bg: 'bg-emerald-50', border: 'border-emerald-100' },
-                { label: 'Points of Interest', value: stats.totalPois.toLocaleString(), color: 'text-blue-600', bg: 'bg-blue-50', border: 'border-blue-100' },
-                { label: 'Active Areas', value: stats.totalAreas.toLocaleString(), color: 'text-purple-600', bg: 'bg-purple-50', border: 'border-purple-100' },
-                { label: 'Searches', value: stats.totalSearches.toLocaleString(), color: 'text-amber-600', bg: 'bg-amber-50', border: 'border-amber-100' },
+                { label: 'DIGITAL ADDRESSES', value: stats.totalAddresses.toLocaleString(), accent: 'text-emerald-500' },
+                { label: 'POINTS OF INTEREST', value: stats.totalPois.toLocaleString(), accent: 'text-blue-500' },
+                { label: 'ACTIVE AREAS', value: stats.totalAreas.toLocaleString(), accent: 'text-purple-500' },
+                { label: 'TOTAL SEARCHES', value: stats.totalSearches.toLocaleString(), accent: 'text-amber-500' },
               ].map((s) => (
-                <div key={s.label} className={`text-center p-6 ${s.bg} border ${s.border} rounded-xl`}>
-                  <div className={`text-3xl font-bold ${s.color} mb-1`}>{s.value}</div>
-                  <div className="text-xs text-gray-500">{s.label}</div>
+                <div key={s.label} className="border-r border-b border-gray-200 p-8">
+                  <div className={`text-4xl md:text-5xl font-bold ${s.accent} mb-3`}>{s.value}</div>
+                  <div className="text-[11px] text-gray-400 tracking-[0.2em] uppercase font-medium">{s.label}</div>
                 </div>
               ))}
             </div>
@@ -231,62 +265,98 @@ export default function HomePage() {
         </section>
       )}
 
-      {/* API Preview */}
-      <section className="relative py-24 px-6 bg-gray-50/50">
-        <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-12">
-            <p className="text-emerald-600 text-sm font-semibold uppercase tracking-widest mb-3">Developer API</p>
-            <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Build With Our API</h3>
-            <p className="text-gray-500 max-w-xl mx-auto">Integrate digital addressing into your applications with our REST API.</p>
-          </div>
-          <div className="relative">
-            <div className="absolute -inset-1 bg-gradient-to-r from-gray-200 to-gray-300 rounded-2xl blur opacity-30" />
-            <div className="relative bg-gray-900 border border-gray-800 rounded-2xl overflow-hidden shadow-2xl">
-              <div className="flex items-center gap-2 px-4 py-3 bg-gray-800 border-b border-gray-700">
-                <div className="w-3 h-3 rounded-full bg-red-400" />
-                <div className="w-3 h-3 rounded-full bg-yellow-400" />
-                <div className="w-3 h-3 rounded-full bg-green-400" />
-                <span className="text-xs text-gray-400 ml-2 font-mono">API Examples</span>
+      {/* ── API Preview ───────────────────────────────────────────── */}
+      <section className="py-24 md:py-32 px-8 bg-white">
+        <div className="max-w-[1400px] mx-auto">
+          <div className="grid md:grid-cols-2 gap-16 items-start">
+            <div>
+              <div className="text-purple-500 text-xs font-medium tracking-[0.3em] uppercase mb-6">DEVELOPER API</div>
+              <h2 className="text-3xl md:text-5xl font-bold text-[#0F1629] uppercase leading-[1] tracking-[-0.02em] mb-8">
+                BUILD WITH OUR API
+              </h2>
+              <p className="text-gray-500 text-lg leading-relaxed mb-10">
+                Integrate digital addressing into your applications with our REST API. Generate addresses, look up codes, search locations, and manage points of interest programmatically.
+              </p>
+              <Link href="/api-docs" className="inline-flex items-center gap-4 px-8 py-3.5 bg-[#0F1629] text-white text-xs font-medium tracking-[0.15em] uppercase hover:bg-[#1a2240] transition-colors">
+                VIEW API DOCUMENTATION
+                <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+              </Link>
+            </div>
+
+            <div className="bg-[#0F1629] overflow-hidden">
+              <div className="flex items-center gap-2 px-5 py-3 bg-[#0a0e1a] border-b border-white/5">
+                <div className="w-2.5 h-2.5 rounded-full bg-red-400/60" />
+                <div className="w-2.5 h-2.5 rounded-full bg-yellow-400/60" />
+                <div className="w-2.5 h-2.5 rounded-full bg-green-400/60" />
+                <span className="text-[11px] text-gray-500 ml-3 font-mono tracking-wider uppercase">API Examples</span>
               </div>
-              <pre className="p-6 text-sm font-mono overflow-x-auto"><code className="text-gray-300">{`# Generate digital address from coordinates
-GET /api/postcode?lat=-15.4183&lng=28.2870
+              <pre className="p-6 text-[13px] font-mono overflow-x-auto leading-relaxed"><code className="text-gray-400">{`# Generate digital address
+`}<span className="text-emerald-400">GET</span>{` /api/postcode?lat=-15.4183&lng=28.287
 
 # Look up a digital address
-GET /api/address/lookup?address=LSA-K28-870183
+`}<span className="text-emerald-400">GET</span>{` /api/address/lookup?address=LSA-K28-870183
 
-# Reverse geocode with nearby POIs
-GET /api/address/reverse?lat=-15.4183&lng=28.2870&radius=5
+# Search locations & POIs
+`}<span className="text-emerald-400">GET</span>{` /api/search?q=Lusaka
 
-# Search by name or digital address
-GET /api/search?q=Lusaka
-
-# List & create POIs
-GET /api/pois?category=hospital&province=LSA
-POST /api/pois  { "name": "UTH", "latitude": -15.40, "longitude": 28.31 }
-
-# Create event area (e.g. Trade Fair)
-POST /api/areas  { "name": "Trade Fair 2026", "area_type": "event", ... }`}</code></pre>
+# Create a point of interest
+`}<span className="text-blue-400">POST</span>{` /api/pois
+`}<span className="text-gray-500">{`{ "name": "UTH", "lat": -15.40, "lng": 28.31 }`}</span></code></pre>
             </div>
-          </div>
-          <div className="text-center mt-8">
-            <Link href="/api-docs" className="inline-flex items-center gap-2 px-6 py-3 text-sm font-medium text-emerald-600 border border-emerald-200 hover:bg-emerald-50 rounded-xl transition-all">
-              View Full API Documentation
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
-            </Link>
           </div>
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="border-t border-gray-100 py-12 px-6 bg-white">
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-lg bg-emerald-50 flex items-center justify-center">
-              <svg className="w-4 h-4 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /></svg>
+      {/* ── Footer ────────────────────────────────────────────────── */}
+      <footer className="bg-[#0F1629] py-20 px-8">
+        <div className="max-w-[1400px] mx-auto">
+          <div className="grid md:grid-cols-2 gap-16 mb-16">
+            {/* Left */}
+            <div>
+              <h3 className="text-2xl md:text-3xl font-bold text-white uppercase leading-[1] tracking-[-0.02em] mb-10">
+                EXPLORE ZNDS
+              </h3>
+              <div className="space-y-0 border-t border-white/10">
+                {[
+                  { num: '01', label: 'Home', href: '/' },
+                  { num: '02', label: 'Interactive Map', href: '/map' },
+                  { num: '03', label: 'API Documentation', href: '/api-docs' },
+                  { num: '04', label: 'Admin Dashboard', href: '/admin' },
+                ].map(link => (
+                  <Link key={link.href} href={link.href} className="flex items-center gap-4 py-4 border-b border-white/10 group hover:border-emerald-400/30 transition-colors">
+                    <span className="text-emerald-400 text-xs font-mono font-bold">{link.num}</span>
+                    <span className="text-white text-sm tracking-wide group-hover:pl-2 transition-all">{link.label}</span>
+                  </Link>
+                ))}
+              </div>
             </div>
-            <span className="text-gray-500 text-sm">Zambia Digital Addressing System</span>
+
+            {/* Right */}
+            <div>
+              <h3 className="text-2xl md:text-3xl font-bold text-white uppercase leading-[1] tracking-[-0.02em] mb-10">
+                ZAMBIA NATIONAL DIGITAL ADDRESSING SYSTEM
+              </h3>
+              <p className="text-gray-400 leading-relaxed mb-8 max-w-md">
+                A comprehensive digital infrastructure for location identification, navigation, and service delivery across the Republic of Zambia.
+              </p>
+              <Link href="/map" className="inline-flex items-center gap-4 px-8 py-3.5 bg-emerald-500 hover:bg-emerald-600 text-white text-xs font-medium tracking-[0.15em] uppercase transition-colors">
+                GET STARTED
+                <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+              </Link>
+            </div>
           </div>
-          <div className="text-gray-400 text-xs">Powered by ZICTA &middot; Republic of Zambia &middot; {new Date().getFullYear()}</div>
+
+          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 pt-8 border-t border-white/10">
+            <div className="flex items-center gap-3">
+              <div className="w-7 h-7 bg-emerald-500 flex items-center justify-center">
+                <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /></svg>
+              </div>
+              <span className="text-gray-500 text-xs tracking-[0.1em] uppercase">ZNDS</span>
+            </div>
+            <div className="text-gray-600 text-[11px] tracking-[0.1em] uppercase">
+              Powered by ZICTA &middot; Republic of Zambia &middot; {new Date().getFullYear()}
+            </div>
+          </div>
         </div>
       </footer>
     </div>
